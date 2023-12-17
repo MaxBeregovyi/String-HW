@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String HW</title>
+  </head>
+  <body>
+    <script>
+      const emojis = [..."😀😃😄😁😆😅😂🤣😊😇"];
+
+      function getRandomValue(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      let userString = prompt("Write any string");
+      let userID = +prompt("Write ID in the form of a number");
+
+      switch (userID) {
+        case 1:
+          let indexCharAt = +prompt("Enter the index of the character");
+          alert(`Unicode: ${userString.charCodeAt(indexCharAt)}`);
+          break;
+        case 2:
+          let indexSlice = +prompt("Enter the index of the character");
+          alert(`Random symbol: 
+           ${
+             userString.slice(0, indexSlice) + userString.slice(indexSlice + 1)
+           } `);
+          break;
+        case 3:
+          let indexSliceEmoji = +prompt("Enter the index of the character");
+          let randomEmoji = emojis[getRandomValue(0, emojis.length - 1)];
+          alert(`Random emoji: 
+            ${
+              userString.slice(0, indexSliceEmoji) +
+              randomEmoji +
+              userString.slice(indexSliceEmoji + 1)
+            }`);
+          break;
+        case 4:
+          alert(
+            `Number of letters in a line: ${
+              userString.replace(/\s/g, "").length
+            }`
+          );
+          break;
+        default:
+          alert("unknown character😡");
+      }
+    </script>
+  </body>
+</html>
